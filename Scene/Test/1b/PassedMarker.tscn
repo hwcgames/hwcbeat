@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dynxr3vwwgmg5"]
+[gd_scene load_steps=2 format=3 uid="uid://clqo0qtxg70av"]
 
-[ext_resource type="Script" path="res://Scene/Test/Marker.gd" id="1_mvnya"]
+[ext_resource type="Script" path="res://Scene/Test/1b/Marker.gd" id="1_8iulk"]
 
 [node name="PassedMarker" type="ColorRect"]
 anchors_preset = 9
@@ -10,4 +10,4 @@ offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 1)
-script = ExtResource("1_mvnya")
+script = ExtResource("1_8iulk")

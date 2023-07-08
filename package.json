@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@tonejs/midi": "^2.0.28"
+  },
+  "scripts": {
+    "prepare_midi": "ts-node prepare_midi.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "ts-node": "^10.9.1"
+  }
+}

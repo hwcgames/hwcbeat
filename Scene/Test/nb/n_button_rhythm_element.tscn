@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://qq6meiqlb560"]
+
+[node name="n_button_rhythm_element" type="HBoxContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2

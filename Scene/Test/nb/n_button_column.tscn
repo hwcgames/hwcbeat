@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://c78spkf0rdk07"]
+
+[ext_resource type="Script" path="res://Scene/Test/nb/n_button_column.gd" id="1_k1gb5"]
+[ext_resource type="Texture2D" uid="uid://c7jlqcf4x1rn4" path="res://icon.svg" id="2_s2qbv"]
+
+[node name="NButtonColumn" type="VBoxContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("1_k1gb5")
+scored = true
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_s2qbv")
+expand_mode = 1
+
+[node name="Bar" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Bar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -32.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.627451)
+
+[node name="ColorRect2" type="ColorRect" parent="Bar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -32.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.627451)
+
+[node name="ColorRect3" type="ColorRect" parent="Bar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -32.0
+offset_right = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.627451)
