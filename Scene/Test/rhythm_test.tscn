@@ -1,0 +1,136 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3s110ge0pyii"]
+
+[ext_resource type="Script" path="res://Scene/Test/test_input_builder.gd" id="1_8prm1"]
+[ext_resource type="Script" path="res://Scene/Test/rhythm_test.gd" id="1_xeovh"]
+[ext_resource type="Script" path="res://Resource/MusicSubscription.gd" id="2_dvf6m"]
+
+[sub_resource type="Gradient" id="Gradient_27dtx"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cp0bo"]
+gradient = SubResource("Gradient_27dtx")
+
+[sub_resource type="Resource" id="Resource_d47a0"]
+script = ExtResource("2_dvf6m")
+offset = 2.0
+filter = "Tick"
+
+[node name="RhythmTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xeovh")
+
+[node name="OutBar" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.75
+
+[node name="Out" type="ColorRect" parent="OutBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="OutInner" type="ColorRect" parent="OutBar/Out"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[node name="In" type="ColorRect" parent="OutBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.439216, 0, 1)
+
+[node name="InLine" type="TextureRect" parent="OutBar/In"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_cp0bo")
+
+[node name="InLine2" type="TextureRect" parent="OutBar/In"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -45.0
+offset_right = 90.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_cp0bo")
+flip_h = true
+
+[node name="Earliest" type="Label" parent="OutBar/In"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+text = "
+^
+Earliest"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Latest" type="Label" parent="OutBar/In"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+text = "
+^
+Latest
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Latest2" type="Label" parent="OutBar/In"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+text = "
+^
+Best
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="InputBuilder" type="Node" parent="."]
+script = ExtResource("1_8prm1")
+subscription = SubResource("Resource_d47a0")
