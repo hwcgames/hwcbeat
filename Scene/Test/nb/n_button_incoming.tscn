@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbpv76ar15ft0"]
+
+[ext_resource type="Texture2D" uid="uid://c7jlqcf4x1rn4" path="res://icon.svg" id="1_0yqck"]
+[ext_resource type="Script" path="res://Scene/Test/nb/n_button_incoming.gd" id="2_1wt3o"]
+[ext_resource type="Texture2D" uid="uid://crrdf0e8c2g1m" path="res://Texture/trail.png" id="3_mr2hw"]
+
+[node name="nbincoming" type="TextureRect"]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_0yqck")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_1wt3o")
+
+[node name="Tail" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.627451, 0.627451, 0.627451, 1)
+z_index = -1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mr2hw")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

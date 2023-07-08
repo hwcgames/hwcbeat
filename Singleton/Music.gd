@@ -11,20 +11,6 @@ extends Node
 #	func _init():
 #		pass
 
-class Note:
-	@export var time: float
-	@export var duration: float
-	@export var channel: String
-	@export var pitch: int
-	@export var volume: float
-	
-	func _init(from: Dictionary):
-		time = float(from.get("time"))
-		duration = float(from.get("duration"))
-		channel = from.get("channel")
-		pitch = int(from.get("pitch"))
-		volume = float(from.get("volume"))
-
 var pending_inputs: Array[MusicCue] = []
 var subscriptions: Array[MusicSubscription] = []
 var timer: float = 0
@@ -39,8 +25,8 @@ func _ready():
 	add_child(SoundPlayer)
 
 func stop(transition_time=0.5):
-	var tween = get_tree().create_tween().bind_node(self)
 	if SoundPlayer.playing:
+		var tween = get_tree().create_tween().bind_node(self)
 		tween.tween_property(SoundPlayer, "volume_db", -50, transition_time/2)
 		tween.play()
 		await tween.finished
@@ -51,11 +37,13 @@ func stop(transition_time=0.5):
 	notes = []
 
 func pause():
+	get_tree().paused = true
 	SoundPlayer.stream_paused = true
 	self.set_physics_process(false)
 	paused.emit()
 
 func resume():
+	get_tree().paused = false
 	SoundPlayer.stream_paused = false
 	self.set_physics_process(true)
 	resumed.emit()
@@ -135,6 +123,9 @@ func _input(event):
 		input.action in actions and \
 		input.pressed == pressed
 	)
+	
+	relevant.sort_custom(func(a, b): abs(a.when - time) < abs(b.when - time))
+	
 	for input in relevant:
 		if time < input.when - input.early_tolerance:
 			if prevent_fail > 0:
@@ -147,3 +138,4 @@ func _input(event):
 			else:
 				input.passed.emit((time - input.when) / input.late_tolerance)
 		pending_inputs.remove_at(pending_inputs.find(input))
+		break;

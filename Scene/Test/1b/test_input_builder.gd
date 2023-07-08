@@ -10,7 +10,7 @@ func _ready():
 func subscribe():
 	Music.subscriptions.push_back(subscription)
 
-func note(note: Music.Note):
+func note(note: Note):
 	var cue = MusicCue.new();
 	cue.action = "ui_accept"
 	cue.pressed = true
