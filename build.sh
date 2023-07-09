@@ -25,6 +25,7 @@ else
 	export GODOT_PROFILE="Linux"
 	export EXTENSION="run"
 fi
+make
 # Run godot build
 ./godot --headless --export-release "$GODOT_PROFILE" $BUILD_DIR/$NAME.$EXTENSION
 # Copy licensing
