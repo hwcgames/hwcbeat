@@ -28,13 +28,14 @@ jobs:
         with:
           path: ~/.local/bin
           key: ${{ matrix.target }}-godot-binaries
-      - uses: denoland/setup-deno@v1
+      - uses: actions/setup-node@v3
         with:
-          deno-version: v1.x
+          node-version: 18
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
         run: |
+          npm i
           BEAT_TARGET=${{ matrix.target }} ./build.sh
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
