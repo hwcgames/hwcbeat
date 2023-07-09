@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: |
-          BEAT_TARGET=${{ matrix.target }} ./build.shbeat
+          BEAT_TARGET=${{ matrix.target }} ./build.sh
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
