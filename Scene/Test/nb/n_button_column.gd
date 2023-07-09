@@ -1,7 +1,7 @@
 @tool
 extends Control
 
-@export var scored = false
+@export var scored = false 
 @export var action: String
 @export var cue_template: MusicCue
 
