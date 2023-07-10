@@ -1,0 +1,6 @@
+[book]
+authors = ["Willow"]
+language = "en"
+multilingual = false
+src = "src"
+title = "HWCBeat Docs"
