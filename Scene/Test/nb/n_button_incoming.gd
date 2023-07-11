@@ -31,7 +31,7 @@ func _physics_process(delta):
 		var cue_length = (end_cue.when - time) if end_cue else 0
 		%Tail.offset_bottom = cue_length * pixels_per_second
 	else:
-		if not scored:
+		if end_cue and not scored:
 			end_cue.passed.emit(0, end_cue)
 		queue_free()
 

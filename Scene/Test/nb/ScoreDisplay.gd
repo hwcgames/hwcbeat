@@ -5,6 +5,7 @@ var tween: Tween
 func _ready():
 	Score.gain.connect(gain)
 	Score.lose.connect(lose)
+	update()
 
 func gain(_amt):
 	update()

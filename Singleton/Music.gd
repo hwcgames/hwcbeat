@@ -52,7 +52,7 @@ func resume():
 
 func play(song: String, transition_time=0.5):
 	stop(transition_time)
-	SoundPlayer.volume_db
+	SoundPlayer.pitch_scale = 1
 	var audio: AudioStream = load("res://Song/"+song+"/"+song+".ogg")
 	var json: String = FileAccess.get_file_as_string("res://Song/"+song+"/"+song+".json")
 	var json_notes = JSON.parse_string(json)
