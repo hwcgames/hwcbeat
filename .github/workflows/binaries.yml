@@ -50,10 +50,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: drmingdrmer/mdbook-full@main
       - name: Build MDBook
+          # cargo install mdbook-admonish
+          # mdbook-admonish install .
         run: |
-          cargo install mdbook-admonish
           cd book
-          mdbook-admonish install .
           mdbook build
       - name: Upload Artifact
         uses: actions/upload-artifact@v1

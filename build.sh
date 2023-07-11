@@ -25,6 +25,7 @@ else
 	export GODOT_PROFILE="Linux"
 	export EXTENSION="run"
 fi
+touch node_modules/.gdignore
 # Run one tick of editor to auto-import things
 ./godot --editor --quit --headless
 make
