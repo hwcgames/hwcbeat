@@ -16,6 +16,9 @@ extends HBoxContainer
 			var new_child = preload('n_button_column.tscn').instantiate()
 			add_child(new_child)
 		apply_colors()
+		apply_actions()
+		apply_cue_template()
+		apply_scored()
 	get:
 		return get_child_count()
 
@@ -28,9 +31,8 @@ extends HBoxContainer
 
 @export var scored: bool:
 	set(scored):
-		for child in get_children():
-			child.scored = scored
 		_scored = scored
+		apply_scored()
 	get:
 		return _scored
 
@@ -39,8 +41,7 @@ var _scored: bool = false
 @export var cue_template: MusicCue:
 	set(cue):
 		_cue_template = cue
-		for child in get_children():
-			child.cue_template = cue
+		apply_cue_template()
 	get:
 		return _cue_template
 
@@ -59,6 +60,14 @@ func apply_colors():
 func apply_actions():
 	for index in range(get_child_count()):
 		get_child(index).action = actions_[index]
+
+func apply_cue_template():
+	for child in get_children():
+		child.cue_template = _cue_template
+
+func apply_scored():
+	for child in get_children():
+		child.scored = _scored
 
 func _ready():
 	if Engine.is_editor_hint():

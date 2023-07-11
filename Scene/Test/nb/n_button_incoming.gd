@@ -35,7 +35,7 @@ func _physics_process(delta):
 			end_cue.passed.emit(0, end_cue)
 		queue_free()
 
-func hit_start_cue(_at: float):
+func hit_start_cue(_at: float, _cue: MusicCue):
 	%Tail.modulate = Color.WHITE
 	if not end_cue:
 		queue_free()
