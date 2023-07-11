@@ -25,6 +25,8 @@ else
 	export GODOT_PROFILE="Linux"
 	export EXTENSION="run"
 fi
+# Run one tick of editor to auto-import things
+./godot --editor --quit --headless
 make
 # Run godot build
 ./godot --headless --export-release "$GODOT_PROFILE" $BUILD_DIR/$NAME.$EXTENSION
