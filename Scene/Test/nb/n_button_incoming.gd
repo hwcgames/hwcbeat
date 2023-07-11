@@ -20,7 +20,7 @@ func _physics_process(delta):
 	if progress <= 1:
 		anchor_top = 1 - progress
 		anchor_bottom = 1 - progress
-	elif time <= end_cue.when:
+	elif time <= (end_cue.when if end_cue else 0):
 		anchor_top = 0
 		anchor_bottom = 0
 		var cue_length = (end_cue.when - time) if end_cue else 0
