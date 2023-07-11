@@ -21,6 +21,7 @@ run/canvas_textures/default_texture_filter=1
 [autoload]
 
 Music="*res://Singleton/Music.gd"
+Score="*res://Singleton/Score.gd"
 
 [display]
 

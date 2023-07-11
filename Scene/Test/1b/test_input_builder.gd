@@ -25,14 +25,14 @@ func note(note: Note):
 	in_rect.add_child(preload("Incoming.tscn").instantiate())
 	pass
 
-func missed(at: float):
+func missed(at: float, _cue: MusicCue):
 	var pos = (at / 2) + 0.5
 	var marker: Control = preload('FailedMarker.tscn').instantiate()
 	marker.anchor_left = pos
 	marker.anchor_right = pos
 	in_rect.add_child(marker)
 	pass
-func passed(at: float):
+func passed(at: float, _cue: MusicCue):
 	var pos = (at / 2) + 0.5
 	var marker: Control = preload('PassedMarker.tscn').instantiate()
 	marker.anchor_left = pos

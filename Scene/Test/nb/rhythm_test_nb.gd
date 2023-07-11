@@ -1,4 +1,4 @@
 extends Control
 
 func _ready():
-	Music.play("polaris3")
+	Music.play("polaris1")

@@ -94,9 +94,9 @@ func _physics_process(_delta):
 		# This is only for missed inputs.
 		if new_time_truth > input.when + input.late_tolerance:
 			if prevent_fail > 0:
-				input.passed.emit(0)
+				input.passed.emit(0, input)
 			else:
-				input.missed.emit(1)
+				input.missed.emit(1, input)
 			missed.push_back(input)
 	for input in missed:
 		pending_inputs.remove_at(pending_inputs.find(input))
@@ -123,19 +123,23 @@ func _input(event):
 		input.action in actions and \
 		input.pressed == pressed
 	)
+	if !pressed:
+		for note in relevant:
+			print(JSON.stringify(note as MusicCue))
+		print(time)
 	
 	relevant.sort_custom(func(a, b): abs(a.when - time) < abs(b.when - time))
 	
 	for input in relevant:
 		if time < input.when - input.early_tolerance:
 			if prevent_fail > 0:
-				input.passed.emit(0)
+				input.passed.emit(0, input)
 			else:
-				input.missed.emit((time - input.when) / input.early_tolerance)
+				input.missed.emit((time - input.when) / input.early_tolerance, input)
 		else:
 			if time < input.when:
-				input.passed.emit((time - input.when) / input.early_tolerance)
+				input.passed.emit((time - input.when) / input.early_tolerance, input)
 			else:
-				input.passed.emit((time - input.when) / input.late_tolerance)
+				input.passed.emit((time - input.when) / input.late_tolerance, input)
 		pending_inputs.remove_at(pending_inputs.find(input))
 		break;

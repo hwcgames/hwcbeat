@@ -7,9 +7,10 @@ class_name MusicCue
 @export var late_tolerance: float
 @export var early_fail: float
 @export var pressed: bool
+@export var score_amt: int
 
-signal missed(by: float)
-signal passed(by: float)
+signal missed(by: float, cue: MusicCue)
+signal passed(by: float, cue: MusicCue)
 
 func _init():
 	pass
