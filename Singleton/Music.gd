@@ -20,9 +20,11 @@ var prevent_fail = 0
 signal paused
 signal resumed
 signal start
+signal finished
 
 func _ready():
 	add_child(SoundPlayer)
+	SoundPlayer.finished.connect(func(): finished.emit())
 
 func stop(transition_time=0.5):
 	if SoundPlayer.playing:
@@ -62,12 +64,10 @@ func play(song: String, transition_time=0.5):
 
 func ffw(to: float):
 	prevent_fail += 1
-	if to < SoundPlayer.get_playback_position():
-		SoundPlayer.pitch_scale = -2.0
-	else:
+	if to > SoundPlayer.get_playback_position():
 		SoundPlayer.pitch_scale = 5.0
-	while SoundPlayer.get_playback_position() < to:
-		await get_tree().physics_frame
+		while SoundPlayer.get_playback_position() < to:
+			await get_tree().physics_frame
 	SoundPlayer.pitch_scale = 1.0
 	SoundPlayer.seek(to)
 	prevent_fail -= 1
